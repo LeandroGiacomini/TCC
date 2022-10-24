@@ -1,74 +1,32 @@
-import { useState } from "react";
-import { Cadastrar } from "../pages/Cadastro/style";
-import { Button } from "../pages/Components/buttons/buttons";
-import { Inputs } from "../pages/Components/inputs/inputs";
-import { All } from "../Style/all";
-import { getToken, Token } from "./auth";
-import Axios from 'axios'
+import { useEffect } from "react"
+import { useState } from "react"
 
-export function Data(){
-    const current = new Date()
-    const data = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`
-    return data
+export const current = new Date()
+
+
+export function Dia(){
+    if (current.getDate() < 10){
+        const dia = `0${current.getDate()}`
+        return dia
+    }else{
+        const dia = current.getDate()
+        return dia
+    }
 }
 
-export function Modal() {
-    
-    const[inf, setInf] = useState()
-
-
-    const buttonAlt = () =>{
-
-        const teste = {
-            email: inf.email,
-            fkImg: 1,
-            insertDate: getToken().insertDate,
-            modDate: Data(),
-            nome: inf.nome,
-            senha: inf.senha,
-            statusUser: 1,
-            userID: getToken().userID
-        }
-        
-
-        Axios.put(`http://localhost:3001/usuario/update/${getToken().userID}`,{
-            statusUser: 1,
-            fkImg: 1,
-            insertDate: getToken().insertDate,
-            modDate: Data(),
-            email: inf.email,
-            nome: inf.nome,
-            senha: inf.senha
-        }).then(() =>{
-            localStorage.removeItem(Token)
-            localStorage.setItem(Token, JSON.stringify(teste))    
-            window.location.replace(`/Perfil/${teste.nome}`)
-        })
+export function Mes(){
+    if ((current.getMonth() + 1) < 10){
+        const mes = `0${current.getMonth()+1}`
+        return mes
+    }else{
+        const mes = current.getMonth()+1
+        return mes
     }
-    
-    const ChangeUpdate = (value) =>{
-        setInf(prevValue =>({
-            ...prevValue,
-            [value.target.name]: value.target.value,
-        }))
-    };
+}
 
-    const negar = () =>{
-        window.location.replace(`Perfil/../${getToken().nome}`, {replace: true})
-    }
-        
-    
+export function Data(){
 
-    return(
-        <All>
-            <Cadastrar>
-                <Inputs id="nome" name="nome" type="text" placeholder="Nome" onChange={ChangeUpdate} />
+    const data = `${Dia()}/${Mes()}/${current.getFullYear()}`
 
-                <Inputs id="email" name="email" type="email" placeholder="Email" onChange={ChangeUpdate} />
-                <Inputs id="senha" name="senha" type="password" placeholder="Senha" onChange={ChangeUpdate} />
-                <Button type='button' onClick={() => buttonAlt()} texto="Confirmar" ></Button>
-                <Button type='button' onClick={() => negar()} texto="Cancelar" ></Button>
-            </Cadastrar>
-        </All>
-    )
+    return data
 }

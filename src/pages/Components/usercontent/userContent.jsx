@@ -1,11 +1,9 @@
 import { getToken, Token } from "../../../services/auth"
 import { All } from "../../../Style/all"
-import { Button, Button2 } from "../buttons/buttons"
-import { Botao } from "../buttons/style"
-import { Foter } from "../footer/Footer"
-import { App } from "../Navbar/Navbar"
+import { Button2 } from "../buttons/buttons"
 import { ProfileAlign, Nome, IMGProfile, Info, Obras, Profile, UserContent, Inf } from "./style"
-import Axios from 'axios'
+import { AxiosUser } from "../../../services/axios"
+import { Data } from "../../../services/utils"
 
 export function OtherUser(user){
     const usuario = user.user
@@ -42,15 +40,8 @@ export function OtherUser(user){
 
 export function MyProfile(){
     console.log(getToken())
-    
-    const buttonDel = () =>{
 
-        Axios.delete(`http://localhost:3001/usuario/delete/${getToken().userID}`).then(()=>{
-            localStorage.removeItem(Token)    
-            window.location.replace('/', {replace: true})
-        })
-       
-    }
+    console.log(Data())
 
     const update = () =>{
         window.location.replace('Perfil/../Update')
@@ -75,7 +66,7 @@ export function MyProfile(){
 
                     
                         
-                        <Button2 type='button' onClick={() => buttonDel()} texto="Deletar" ></Button2>  
+                        <Button2 type='button' onClick={() => new AxiosUser().axiosDel()} texto="Deletar" ></Button2>  
                         <Button2 type='button' onClick={() => update()} texto="Update" ></Button2>
                        
                    
