@@ -4,7 +4,7 @@ const con = await poolConnect()
 
 // location, key
 
-export class Aws{
+export class ImgModel{
     constructor(file){
         this.file = file
     }
