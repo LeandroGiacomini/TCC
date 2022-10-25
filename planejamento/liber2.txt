@@ -22,7 +22,8 @@ create table liv(
 )
 
 create TABLE img(
-	nome varchar(255) not null unique,
+	nomeSite varchar(255) not null,
+	nomeHash varchar(255) not null unique,
 	originalName varchar(255) not null unique,
 	tamanho varchar(100) not null,
 	pathImg varchar(1000) not null,
