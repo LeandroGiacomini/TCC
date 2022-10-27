@@ -9,16 +9,21 @@ const GlobalStyle = createGlobalStyle`
     }
     html,body{
         height: 100%;
+        max-height: auto;
         width: 100%;
+        max-width: auto;
         text-rendering: optimizeLegibility;
         font-family: arial;
+        display: flex;
     }
     html{
         font-size: 62.5%;
     }
     #root{
         height: 100%;
+        max-height: auto;
         width: 100%;
+        max-width: auto;
         display: flex;
     }
     .link{

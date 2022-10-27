@@ -6,7 +6,9 @@ export const Navbar = styled.div`
 
     background-color: ${Primario};
     width: 100%;
-    height: 8%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 8rem;
 
     margin-right: 100%; 
     display: flex;
@@ -23,9 +25,10 @@ export const ProfileContainer = styled.div`
 `;
 
 export const Image = styled.img`
-
-    width: 7rem;
-    height: 6rem;
+    width: 100%;
+    height: 100%;
+    max-width: 7rem;
+    max-height: 6rem;
     margin-left: 3rem;
 
 `;
@@ -44,7 +47,7 @@ export const Links = styled.ul`
     align-items: center;
     gap: 2rem;
     list-style: none;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-weight: bold;
     font-family: Century Gothic
     ;
@@ -61,7 +64,7 @@ export const Link = styled.li`
 export const link = styled.a`
 
     text-decoration: none;
-    font-size: 50px;
+    font-size: 5rem;
 
 `;
 
