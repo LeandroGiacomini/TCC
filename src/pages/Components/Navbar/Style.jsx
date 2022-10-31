@@ -8,7 +8,7 @@ export const Navbar = styled.div`
     width: 100%;
     max-width: 100%;
     height: 100%;
-    max-height: 8rem;
+    max-height: 20%;
 
     margin-right: 100%; 
     display: flex;
@@ -31,13 +31,29 @@ export const Image = styled.img`
     max-height: 6rem;
     margin-left: 3rem;
 
-`;
+    @media(min-width: 2260px){
+        max-width: 14rem;
+        max-height: 12rem;
+    }
+
+    @media(max-width: 426px){
+        max-width: 4rem;
+        max-height: 4rem;
+    }
+
+`; 
 
 export const Title = styled.h2`
 
     font-size: 2rem;
     font-family: Century Gothic;
     margin-left: 1rem;
+
+    @media(max-width: 426px){
+        font-size: 1.5rem;
+        margin-left: 0.7rem;
+    }
+
 
 `;
 

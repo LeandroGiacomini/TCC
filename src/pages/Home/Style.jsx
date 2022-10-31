@@ -30,6 +30,7 @@ export const Principal = styled.div`
     margin-top: 7rem;
     margin-bottom: 7rem;
 
+
 `;
 
 

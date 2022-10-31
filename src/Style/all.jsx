@@ -8,3 +8,8 @@ export const All = styled.div`
     display: flex;
     flex-direction: column;
 `
+
+export const Texto = styled.p`
+    font-size: 2rem;
+
+`

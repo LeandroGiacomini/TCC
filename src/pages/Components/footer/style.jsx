@@ -8,7 +8,7 @@ export const Footer = styled.div`
     width: 100%;
     max-width: 100%;
     height: 100%;
-    max-height: 8rem;
+    max-height: 20%;
     text-align: center;
     font-family: 'Sen', sans-serif;
     display: flex;

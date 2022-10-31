@@ -4,6 +4,7 @@ import crypto from 'crypto'
 import aws from 'aws-sdk'
 import { __dirname } from './dir.js'
 import MulterS3 from 'multer-s3'
+import utf8 from 'utf8'
 
 const storageTypes = {
     local: Multer.diskStorage({
@@ -14,11 +15,11 @@ const storageTypes = {
             crypto.randomBytes(16, (err, hash)=>{
                 if(err) cb(err)
 
-                const fileName = `${hash.toString('hex')}-${file.originalname}`
+                const fileName = `${hash.toString('hex')}-${utf8.decode(file.originalname)}`
 
                 cb(null, fileName)
             }) 
-        }
+        } 
     }),
     s3: MulterS3({
         s3: new aws.S3(),
@@ -29,7 +30,7 @@ const storageTypes = {
             crypto.randomBytes(16, (err, hash)=>{
                 if(err) cb(err)
 
-                const fileName = `${hash.toString('hex')}-${file.originalname}`
+                const fileName = `${hash.toString('hex')}-${utf8.decode(file.originalname)}`
 
                 cb(null, fileName)
             })
@@ -39,7 +40,7 @@ const storageTypes = {
 
 export const multerConfig = {
     dest: path.resolve(__dirname, '..', 'tmp', 'uploads'),
-    storage: storageTypes['local'], 
+    storage: storageTypes['s3'], 
     limits:{
         fileSize: 100 * 1024 * 1024,
     }, 
@@ -57,4 +58,4 @@ export const multerConfig = {
             cb(new Error("invalid file type."))
         }
     }
-}
+} 

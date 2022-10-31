@@ -30,10 +30,10 @@ export class AxiosUser{
     
     async axiosIns(values){
         Axios.post('http://localhost:3001/usuario/insert',{
-        nome:values.nome,
-        email:values.email,
-        senha:values.senha,
-        insertDate: Data()}).then(()=>{
+            nome:values.nome,
+            email:values.email,
+            senha:values.senha
+        }).then(()=>{
             window.location.replace('/Login', {replace: true})
         
         })
@@ -93,14 +93,12 @@ export class AxiosUser{
             Axios.put(`${localhost}/usuario/update/${getToken().userID}`,{
                 statusUser: 1,
                 fkImg: 1,
-                insertDate: getToken().insertDate,
-                modDate: Data(),
                 email: inf.email,
                 nome: inf.nome,
                 senha: inf.senha
             }).then(() =>{
                 localStorage.removeItem(Token)
-                localStorage.setItem(Token, JSON.stringify(teste))    
+                localStorage.setItem(Token, JSON.stringify(teste))
                 window.location.replace(`/Perfil/${teste.nome}`)
             })    
         } 

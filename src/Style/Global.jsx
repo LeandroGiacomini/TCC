@@ -13,8 +13,15 @@ const GlobalStyle = createGlobalStyle`
         width: 100%;
         max-width: auto;
         text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
         font-family: arial;
         display: flex;
+        
+        
+        input[type="file"] {
+            display: none;
+        }
+        
     }
     html{
         font-size: 62.5%;
@@ -25,6 +32,26 @@ const GlobalStyle = createGlobalStyle`
         width: 100%;
         max-width: auto;
         display: flex;
+
+        @media(min-width: 2560px){
+            font-size: 2rem;
+        }
+ 
+        @media(max-width: 1440px){
+            font-size: 1rem;
+        }
+
+        @media(max-width: 1024px){
+            font-size: 1rem;
+        }
+
+        @media(max-width: 768px){
+            font-size: 0.65rem;
+        }
+        @media(max-width: 320px){
+            font-size: 0.65rem;
+        }
+
     }
     .link{
         text-decoration: none;

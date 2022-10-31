@@ -4,6 +4,8 @@ import { testCon } from "./testConnect.js";
 import { routes } from "./routes.js";
 import Morgan from 'morgan'
 import dotenv from 'dotenv'
+import { __dirname } from './src/utils/dir.js'
+import path from 'path'
 //onde o servidor sobe para o ar, com mais algumas coisas sendo utilizadas.
 
 dotenv.config()
@@ -19,6 +21,7 @@ app.use(express.urlencoded({
     extended: true
 }),
 )
+app.use('/files', express.static(path.resolve(__dirname, 'tmp', 'uploads')))
 
 app.use(routes)
 
